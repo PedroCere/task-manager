@@ -6,14 +6,12 @@ import com.example.user_service.model.User;
 import com.example.user_service.servicies.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -37,6 +35,20 @@ public class UserController {
         User savedUser = userService.create(user);
         UserDto savedUserDto = userMapper.toDto(user);
         return new ResponseEntity<>(savedUserDto, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    private ResponseEntity<List<UserDto>> getAllUsers(){
+        List<User> allUsers = userService.getAllUsers();
+        List<UserDto> allUsersDto = userMapper.toListOfDto(allUsers);
+        return new ResponseEntity<>(allUsersDto, HttpStatus.OK);
+    }
+
+    @GetMapping("/{email}")
+    private ResponseEntity<Optional<UserDto>> getUserByEmail(@PathVariable("email")String email){
+    Optional<User> newUser = userService.getUserByEmail(email);
+    Optional<UserDto> userDto = newUser.map(user -> userMapper.toDto(user));
+    return new ResponseEntity<>(userDto,HttpStatus.OK);
     }
 
 
