@@ -1,6 +1,8 @@
 package com.example.user_service.servicies;
 
+
 import com.example.user_service.exception.UserAlreadyExistsException;
+import com.example.user_service.mappers.UserMapper;
 import com.example.user_service.model.User;
 import com.example.user_service.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -13,24 +15,31 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
-    private PasswordEncoder encoder;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.encoder = passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
+        this.userMapper = userMapper;
+
+        // Log temporal para confirmar el uso del PasswordEncoder correcto
+        System.out.println("PasswordEncoder utilizado: " + passwordEncoder.getClass().getName());
     }
+
     @Override
     public User create(User user) {
-
-        if (userRepository.existsByEmail(user.getEmail())){
-            throw new UserAlreadyExistsException("A user with this email already Exists" + user.getEmail());
+        // Verificar si el usuario ya existe
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new UserAlreadyExistsException("A user with this email already exists: " + user.getEmail());
         }
 
+        // Encriptar la contraseña antes de guardar
         User newUser = User.builder()
                 .username(user.getUsername())
-                .password(encoder.encode(user.getPassword()))
+                .password(passwordEncoder.encode(user.getPassword()))
                 .email(user.getEmail())
                 .build();
 
@@ -38,16 +47,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
-    public Optional<User> getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public User getUserByEmail(String email) {
+        System.out.println("Buscando usuario con email: " + email);
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            System.out.println("Usuario no encontrado: " + email);
+        } else {
+            System.out.println("Usuario encontrado: " + user.getEmail());
+        }
+        return user;
     }
-
-
 }
 
 

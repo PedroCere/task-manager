@@ -1,5 +1,7 @@
 package com.example.user_service.servicies;
 
+import com.example.user_service.config.ExtendedBaseResponse;
+import com.example.user_service.dto.UserDto;
 import com.example.user_service.model.User;
 
 import java.util.List;
@@ -10,5 +12,5 @@ public interface UserService {
 
     List<User> getAllUsers();
 
-    Optional<User> getUserByEmail(String email);
+    User getUserByEmail(String email);
 }

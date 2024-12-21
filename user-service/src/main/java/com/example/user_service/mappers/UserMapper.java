@@ -1,5 +1,6 @@
 package com.example.user_service.mappers;
 
+import com.example.user_service.dto.UserResponseDto;
 import com.example.user_service.model.User;
 import com.example.user_service.dto.UserDto;
 import org.mapstruct.Mapper;
@@ -20,5 +21,5 @@ public interface UserMapper {
 
     List<UserDto> toListOfDto(List<User> users);
 
-    List<User> toListOfEntity(List<UserDto> dtos);
+    List<User> toListOfEntity(List<UserResponseDto> dtos);
 }
