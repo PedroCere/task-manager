@@ -65,6 +65,8 @@ public class AuthServiceImpl implements AuthService {
     public void test() {
         String rawPassword = "caca"; // Contraseña original
         String encodedPassword = "$2a$10$zFyDFkfYH5/8k1dVqP0IaOtkSKCRPdLPNYll9VGS3Nbw2iWUiHQya"; // Contraseña encriptada correcta
+        System.out.println("PasswordEncoder en registro: " + passwordEncoder.getClass().getName());
+        System.out.println("PasswordEncoder en login: " + passwordEncoder.getClass().getName());
 
         boolean matches = passwordEncoder.matches(rawPassword, encodedPassword);
         System.out.println("¿Coincide la contraseña? " + matches); // Esto debería ser true

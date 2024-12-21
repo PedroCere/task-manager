@@ -5,29 +5,22 @@ import com.example.user_service.exception.UserAlreadyExistsException;
 import com.example.user_service.mappers.UserMapper;
 import com.example.user_service.model.User;
 import com.example.user_service.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final UserMapper userMapper;
-
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.userMapper = userMapper;
+    private final UserRepository userRepository;
+    @Autowired
+    private final PasswordEncoder passwordEncoder;
 
-        // Log temporal para confirmar el uso del PasswordEncoder correcto
-        System.out.println("PasswordEncoder utilizado: " + passwordEncoder.getClass().getName());
-    }
 
     @Override
     public User create(User user) {
@@ -36,10 +29,9 @@ public class UserServiceImpl implements UserService {
             throw new UserAlreadyExistsException("A user with this email already exists: " + user.getEmail());
         }
 
-        // Encriptar la contraseña antes de guardar
         User newUser = User.builder()
                 .username(user.getUsername())
-                .password(passwordEncoder.encode(user.getPassword()))
+                .password((user.getPassword()))
                 .email(user.getEmail())
                 .build();
 
