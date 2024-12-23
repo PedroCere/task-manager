@@ -6,6 +6,7 @@ import com.example.user_service.mappers.UserMapper;
 import com.example.user_service.model.User;
 import com.example.user_service.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,7 +21,8 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     @Autowired
     private final PasswordEncoder passwordEncoder;
-
+    @Autowired
+    private KafkaTemplate<String, Long> kafkaTemplate;
 
     @Override
     public User create(User user) {
@@ -54,6 +56,28 @@ public class UserServiceImpl implements UserService {
         }
         return user;
     }
+
+    @Override
+    public void deleteUser(User userToDelete) {
+        if (userToDelete == null || !userRepository.existsByEmail(userToDelete.getEmail())) {
+            System.out.println("User with email " + (userToDelete != null ? userToDelete.getEmail() : "null") + " not found.");
+            throw new IllegalArgumentException("User not found");
+        }
+
+        // Eliminar el usuario
+        userRepository.delete(userToDelete);
+        System.out.println("User deleted successfully: " + userToDelete.getEmail());
+
+        // Enviar evento a Kafka con manejo de excepciones
+        try {
+            System.out.println("Sending event to Kafka: user-deleted-topic, userId=" + userToDelete.getId());
+            kafkaTemplate.send("user-deleted-topic", userToDelete.getId()); // Envía el ID como Long
+            System.out.println("Event published to Kafka for user ID: " + userToDelete.getId());
+        } catch (Exception e) {
+            System.err.println("Failed to publish Kafka event: " + e.getMessage());
+        }
+    }
+
 }
 
 

@@ -8,14 +8,13 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-public class UserUnitTest {
+public class UserServiceTest {
 
     @InjectMocks
     private UserServiceImpl userService;
@@ -64,6 +63,21 @@ public class UserUnitTest {
         assertEquals(email, foundUser.getEmail());
     }
 
+    @Test
+    public void testThatDeleteUserSuccess(){
+
+        //Arrange
+        User user = new User(null,"user","user@gmail.com","password",null,null);
+        String email = user.getEmail();
+        when(userRepository.existsByEmail(user.getEmail())).thenReturn(true);
+        doNothing().when(userRepository).delete(user);
+
+        //Act
+        userService.deleteUser(user);
+
+        //Assert
+        verify(userRepository,times(1)).delete(user);
+    }
 
 
 
