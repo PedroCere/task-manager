@@ -2,6 +2,7 @@ package com.example.task_service.service;
 
 import com.example.task_service.model.Task;
 import com.example.task_service.repository.TaskRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +49,25 @@ public class TaskServiceImpl implements TaskService {
             System.out.println("Task found: " + task.getId());
         }
         return task;
+    }
+
+    @Override
+    public Task fullUpdateTask(Task task) {
+        Task existingTask = taskRepository.findById(task.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Task not found with ID: " + task.getId()));
+
+        Task updatedTask = Task.builder()
+                .id(existingTask.getId())
+                .title(task.getTitle() != null ? task.getTitle() : existingTask.getTitle())
+                .description(task.getDescription() != null ? task.getDescription() : existingTask.getDescription())
+                .status(task.getStatus() != null ? task.getStatus() : existingTask.getStatus())
+                .dueDate(task.getDueDate() != null ? task.getDueDate() : existingTask.getDueDate())
+                .userId(task.getUserId() != null ? task.getUserId() : existingTask.getUserId())
+                .createdAt(existingTask.getCreatedAt())
+                .updatedAt(LocalDateTime.now())
+                .build();
+
+        return taskRepository.save(updatedTask);
     }
 
 

@@ -1,13 +1,12 @@
 package com.example.task_service.controller;
 
 import com.example.task_service.dto.TaskCreateDto;
-import com.example.task_service.dto.TaskRequest;
 import com.example.task_service.dto.TaskResponse;
+import com.example.task_service.dto.TaskUpdateDto;
 import com.example.task_service.mapper.TaskMapper;
 import com.example.task_service.model.Task;
 import com.example.task_service.service.TaskService;
 import jakarta.validation.Valid;
-import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +37,26 @@ public class TaskController {
         return new ResponseEntity<>(taskResponse,HttpStatus.OK);
      }
 
-     @DeleteMapping(path = "/{id}")
+     @GetMapping(path = "/{id}")
+     public ResponseEntity<TaskResponse> getTaskById(@PathVariable Long id){
+        Task task = taskService.getTaskById(id);
+        TaskResponse taskResponse = taskMapper.toResponseDto(task);
+        return new ResponseEntity<>(taskResponse,HttpStatus.OK);
+     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<TaskResponse> updateTask(
+            @PathVariable Long id,
+            @RequestBody @Valid TaskUpdateDto taskUpdateDto) {
+        Task taskToUpdate = taskMapper.toEntityUpdate(taskUpdateDto);
+        taskToUpdate.setId(id);
+        Task updatedTask = taskService.fullUpdateTask(taskToUpdate);
+        TaskResponse response = taskMapper.toResponseDto(updatedTask);
+        return ResponseEntity.ok(response);
+    }
+
+
+    @DeleteMapping(path = "/{id}")
      public void deleteTask(@PathVariable Long id){
          Task taskToDelete = taskService.getTaskById(id);
          taskService.deleteTask(taskToDelete);

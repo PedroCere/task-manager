@@ -72,6 +72,19 @@ public class UserController {
         return ResponseEntity.ok(userResponse);
     }
 
+    @PostMapping("/{id}")
+    public ResponseEntity<UserResponseDto> updateUser(@PathVariable Long id, @RequestBody UserDto userDto){
+
+        User user = userMapper.toEntity(userDto);
+        User updatedUser = userService.fullUpdate(user);
+        UserResponseDto userResponse = UserResponseDto.builder()
+                .username(updatedUser.getUsername())
+                .email(updatedUser.getEmail())
+                .password(updatedUser.getPassword())
+                .build();
+        return ResponseEntity.ok(userResponse);
+    }
+
     @DeleteMapping("/{email}")
     public ResponseEntity<String> deleteUser(@PathVariable("email") String email) {
         try {

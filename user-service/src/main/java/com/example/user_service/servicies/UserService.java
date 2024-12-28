@@ -15,4 +15,6 @@ public interface UserService {
     User getUserByEmail(String email);
 
     void deleteUser(User userToDelete);
+
+    User fullUpdate(User user);
 }

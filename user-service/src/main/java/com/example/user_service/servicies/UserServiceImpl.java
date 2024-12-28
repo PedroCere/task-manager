@@ -24,6 +24,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private KafkaTemplate<String, Long> kafkaTemplate;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
     public User create(User user) {
         // Verificar si el usuario ya existe
@@ -76,6 +79,13 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             System.err.println("Failed to publish Kafka event: " + e.getMessage());
         }
+    }
+
+    @Override
+    public User fullUpdate(User userToUpdate){
+        User existingUser = userRepository.findByEmail(userToUpdate.getEmail());
+        userMapper.updateUserFromDto(userMapper.toDto(userToUpdate),existingUser);
+        return userRepository.save(existingUser);
     }
 
 }

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class TaskCreateDto {
+public class TaskUpdateDto {
 
     private String title;
     private String description;
@@ -22,3 +22,4 @@ public class TaskCreateDto {
 
 
 }
+
