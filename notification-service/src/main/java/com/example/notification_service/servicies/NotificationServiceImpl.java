@@ -4,6 +4,7 @@ import com.example.notification_service.mappers.NotificationMapper;
 import com.example.notification_service.models.Notification;
 import com.example.notification_service.respositories.NotificationRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,7 +56,7 @@ public class NotificationServiceImpl implements NotificationService{
         Notification updateNotification = Notification.builder()
                 .id(existingNotification.getId())
                 .message(notification.getMessage() != null ? notification.getMessage() : existingNotification.getMessage())
-                .read(notification.getRead() != null ? notification.getRead() : existingNotification.getRead())
+                .isRead(existingNotification.isRead())
                 .userId(notification.getUserId() != null ? notification.getUserId() : existingNotification.getUserId())
                 .createdAt(existingNotification.getCreatedAt())
                 .updatedAt(LocalDate.now())
@@ -68,13 +69,28 @@ public class NotificationServiceImpl implements NotificationService{
         notificationRepository.deleteById(notificationToDelete.getId());
         System.out.println("Notification Deleted Successfully");
     }
-
     @Override
     public Notification markAsRead(Notification notificationToMark) {
-        notificationToMark.setRead(true);
-        return notificationRepository.save(notificationToMark);
+        notificationToMark.setIsRead(true);
+        Notification updatedNotification = notificationRepository.save(notificationToMark);
+        System.out.println("Entidad actualizada: " + updatedNotification);
+        return updatedNotification;
     }
 
+    @Override
+    public void markAllAsRead(Long userId) {
+        List<Notification> notifications = notificationRepository.findByUserId(userId);
+        notifications.forEach(notification -> {
+            notification.setUpdatedAt(LocalDate.now());
+            notification.setRead(true);
+        });
+        notificationRepository.saveAll(notifications);
+    }
+
+    @Override
+    public void deleteAllByUser(Long userId) {
+        notificationRepository.deleteByUserId(userId);
+    }
 
 }
 

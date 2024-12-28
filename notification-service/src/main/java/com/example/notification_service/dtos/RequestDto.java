@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class RequestDto {
     private String message;
-    private Boolean read;
+    private Boolean isRead;
     private Long userId;
     private LocalDate createdAt;
     private LocalDate updatedAt;

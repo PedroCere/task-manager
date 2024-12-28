@@ -7,6 +7,7 @@ import com.example.notification_service.mappers.NotificationMapper;
 import com.example.notification_service.models.Notification;
 import com.example.notification_service.respositories.NotificationRepository;
 import com.example.notification_service.servicies.NotificationService;
+import jakarta.transaction.Transactional;
 import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -74,14 +75,29 @@ public class NotificationController {
         notificationService.deleteById(notificationToDelete);
     }
     @PatchMapping(path = "/{id}/read")
-    public ResponseEntity<ResponseDto> markNotificationAsRead(@PathVariable Long id){
+    public ResponseEntity<ResponseDto> markNotificationAsRead(@PathVariable Long id) {
         Notification notificationToMark = notificationService.getById(id);
+        System.out.println("Notificación encontrada: " + notificationToMark);
+
         Notification notificationUpdated = notificationService.markAsRead(notificationToMark);
+        System.out.println("Notificación actualizada: " + notificationUpdated);
+
         ResponseDto responseDto = notificationMapper.toDto(notificationUpdated);
-        return new ResponseEntity<>(responseDto,HttpStatus.OK);
+        System.out.println("DTO de respuesta: " + responseDto);
+
+        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+    }
+    @PatchMapping("/user/{userId}/read")
+    public ResponseEntity<String> markAllAsRead(@PathVariable Long userId) {
+        notificationService.markAllAsRead(userId);
+        return ResponseEntity.ok("All notifications marked as read for user " + userId);
     }
 
-
+    @DeleteMapping("/user/{userId}")
+    public ResponseEntity<Void> deleteAllByUser(@PathVariable Long userId) {
+        notificationService.deleteAllByUser(userId);
+        return ResponseEntity.noContent().build();
+    }
 
 
 

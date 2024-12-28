@@ -18,4 +18,8 @@ public interface NotificationService {
     void deleteById(Notification notificationToDelete);
 
     Notification markAsRead(Notification notificationToMark);
+
+    void markAllAsRead(Long userId);
+
+    void deleteAllByUser(Long userId);
 }

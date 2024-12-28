@@ -4,6 +4,7 @@ import com.example.notification_service.dtos.RequestDto;
 import com.example.notification_service.dtos.ResponseDto;
 import com.example.notification_service.models.Notification;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
 
@@ -15,12 +16,12 @@ import java.util.List;
 )
 public interface NotificationMapper {
 
-    Notification toEntity(RequestDto dto);
-
+    @Mapping(source = "isRead", target = "isRead")
     ResponseDto toDto(Notification notification);
 
-    List<ResponseDto> toListOfDto(List<Notification> notifications);
+    Notification toEntity(RequestDto dto);
 
+    List<ResponseDto> toListOfDto(List<Notification> notifications);
 
 
 }

@@ -20,12 +20,22 @@ public class Notification {
     private Long id;
     @Column
     private String message;
-    @Column
-    private Boolean read;
-    @Column
+
+    @Column(name = "is_read", nullable = false)
+    private Boolean isRead = false;
+
+    @Column(name = "user_id")
     private Long userId;
-    @Column
+    @Column(name = "created_at")
     private LocalDate createdAt;
-    @Column
+    @Column(name = "updated_at")
     private LocalDate updatedAt;
+
+    public boolean isRead() {
+        return isRead;
+    }
+
+    public void setRead(boolean read) {
+        isRead = read;
+    }
 }
