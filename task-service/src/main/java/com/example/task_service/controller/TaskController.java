@@ -23,13 +23,17 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    @PostMapping()
-    private ResponseEntity<TaskCreateDto> createUser(@Valid @RequestBody TaskCreateDto dto){
-        Task user = taskMapper.toEntity(dto);
-        Task savedUser = taskService.createTask(user);
-        TaskCreateDto savedUserDto = taskMapper.toDto(savedUser);
-        return new ResponseEntity<>(savedUserDto, HttpStatus.CREATED);
+    @PostMapping
+    private ResponseEntity<TaskCreateDto> createTask(@Valid @RequestBody TaskCreateDto dto) {
+        System.out.println("DTO recibido: " + dto);
+        Task task = taskMapper.toEntity(dto);
+        System.out.println("Entidad creada: " + task);
+        Task savedTask = taskService.createTask(task);
+        TaskCreateDto savedTaskDto = taskMapper.toDto(savedTask);
+        System.out.println("DTO guardado: " + savedTaskDto);
+        return new ResponseEntity<>(savedTaskDto, HttpStatus.CREATED);
     }
+
     @GetMapping
     public ResponseEntity<List<TaskCreateDto>> getTasks(){
         List<Task> tasks = taskService.getAllTasks();

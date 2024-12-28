@@ -20,4 +20,5 @@ public class UserDto {
     private String password;
     private LocalDateTime updatedAt;
     private LocalDateTime createdAt;
+
 }

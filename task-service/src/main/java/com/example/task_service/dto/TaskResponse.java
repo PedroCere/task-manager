@@ -19,6 +19,7 @@ public class TaskResponse {
     private String status;
     private LocalDate dueDate;
     private Long userId;
+    private Long projectId;
 
 
 }

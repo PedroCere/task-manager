@@ -18,6 +18,7 @@ public class TaskUpdateDto {
     private LocalDate dueDate;
     private String status;
     private Long userId;
+    private Long projectId;
 
 
 

@@ -13,11 +13,20 @@ public class TaskEventConsumer {
     }
 
     @KafkaListener(topics = "user-deleted-topic", groupId = "task-service-group", containerFactory = "kafkaListenerContainerFactory")
-    public void onUserDeleted(Long userId) { // Recibe directamente un Long
+    public void onUserDeleted(Long userId) {
         System.out.println("Received user deletion event for userId: " + userId);
 
-        // Eliminar todas las tareas asociadas al usuario
+
         taskRepository.deleteByUserId(userId);
         System.out.println("Tasks deleted for userId: " + userId);
+    }
+
+    @KafkaListener(topics = "project-deleted-topic", groupId = "task-service-group", containerFactory = "kafkaListenerContainerFactory")
+    public void onProjectDeleted(Long projectId) {
+        System.out.println("Received user deletion event for projectId: " + projectId);
+
+
+        taskRepository.deleteByProjectId(projectId);
+        System.out.println("Tasks deleted for projectId: " + projectId);
     }
 }

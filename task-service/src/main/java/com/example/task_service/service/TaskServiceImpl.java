@@ -6,6 +6,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -21,9 +22,9 @@ public class TaskServiceImpl implements TaskService {
         if (task.getId() != null && taskRepository.existsById(task.getId())) {
             throw new IllegalArgumentException("Task with ID " + task.getId() + " already exists.");
         }
-        task.setCreatedAt(LocalDateTime.now());
-        task.setUpdatedAt(LocalDateTime.now());
-        return taskRepository.save(task); // El ID será generado automáticamente por JPA
+        task.setCreatedAt(LocalDate.now());
+        task.setUpdatedAt(LocalDate.now());
+        return taskRepository.save(task);
     }
 
     @Override
@@ -63,8 +64,9 @@ public class TaskServiceImpl implements TaskService {
                 .status(task.getStatus() != null ? task.getStatus() : existingTask.getStatus())
                 .dueDate(task.getDueDate() != null ? task.getDueDate() : existingTask.getDueDate())
                 .userId(task.getUserId() != null ? task.getUserId() : existingTask.getUserId())
+                .projectId(task.getProjectId() != null ? task.getProjectId() : existingTask.getProjectId())
                 .createdAt(existingTask.getCreatedAt())
-                .updatedAt(LocalDateTime.now())
+                .updatedAt(LocalDate.now())
                 .build();
 
         return taskRepository.save(updatedTask);

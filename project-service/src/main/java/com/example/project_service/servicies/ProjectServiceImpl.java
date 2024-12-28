@@ -54,7 +54,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         Project updatedProject = Project.builder()
                 .id(existingProject.getId())
-                .name(existingProject.getName())
+                .name(project.getName())
                 .description(project.getDescription() != null ? project.getDescription() : existingProject.getDescription())
                 .userId(project.getUserId() != null ? project.getUserId() : existingProject.getUserId())
                 .createdAt(existingProject.getCreatedAt())

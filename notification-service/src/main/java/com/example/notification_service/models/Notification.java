@@ -1,4 +1,4 @@
-package com.example.task_service.model;
+package com.example.notification_service.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,40 +7,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "tasks")
-public class Task {
-
+@Table(name = "notifications")
+public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
-    private String title;
-
+    private String message;
     @Column
-    private String description;
-
-    @Column(name = "due_date")
-    private LocalDate dueDate;
-
+    private Boolean read;
     @Column
-    private String status;
-
-    @Column(name = "user_id")
     private Long userId;
-
-    @Column(name = "project_id")
-    private Long projectId;
-
+    @Column
     private LocalDate createdAt;
-
+    @Column
     private LocalDate updatedAt;
 }
