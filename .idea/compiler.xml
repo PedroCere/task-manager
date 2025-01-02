@@ -23,7 +23,7 @@
         <module name="user-service" />
         <module name="project-service" />
       </profile>
-      <profile name="Annotation profile for notification-service" enabled="true">
+      <profile name="Annotation profile for comment-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -33,10 +33,12 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
         </processorPath>
         <module name="notificatiob-service" />
+        <module name="comment-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="auth-service" target="17" />
+      <module name="comment-service" target="17" />
       <module name="notificatiob-service" target="17" />
       <module name="project-service" target="17" />
       <module name="task-manager" target="17" />
@@ -47,6 +49,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="auth-service" options="-parameters" />
+      <module name="comment-service" options="-parameters" />
       <module name="notificatiob-service" options="-parameters" />
       <module name="project-service" options="-parameters" />
       <module name="task-manager" options="-parameters" />

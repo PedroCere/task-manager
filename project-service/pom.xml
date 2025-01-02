@@ -13,7 +13,7 @@
 	<artifactId>project-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>project-service</name>
-	<description>User Service for Microservices</description>
+	<description>Project Service for Microservices</description>
 
 	<properties>
 		<java.version>17</java.version>
