@@ -5,16 +5,16 @@ import org.mapstruct.factory.Mappers;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface DateMapper {
-    DateMapper INSTANCE = Mappers.getMapper(DateMapper.class);
-
-    default LocalDate map(LocalDateTime dateTime) {
-        return dateTime == null ? null : dateTime.toLocalDate();
+    default LocalDate asLocalDate(Date date) {
+        return date == null ? null : date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-    default LocalDateTime map(LocalDate date) {
-        return date == null ? null : date.atStartOfDay();
+    default Date asDate(LocalDate localDate) {
+        return localDate == null ? null : Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }

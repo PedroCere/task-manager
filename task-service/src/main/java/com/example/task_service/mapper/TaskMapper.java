@@ -18,6 +18,8 @@ import java.util.List;
 )
 public interface TaskMapper {
 
+    @Mapping(source = "title", target = "title") // MapStruct infers this automatically unless overridden
+    @Mapping(source = "description", target = "description")
     @Mapping(source = "dueDate", target = "dueDate")
     @Mapping(source = "userId", target = "userId")
     @Mapping(source = "projectId", target = "projectId")
