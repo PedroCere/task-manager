@@ -4,6 +4,7 @@ import com.example.project_service.dto.ProjectDto;
 import com.example.project_service.mappers.ProjectMapper;
 import com.example.project_service.models.Project;
 import com.example.project_service.servicies.ProjectServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,7 @@ public class ProjectController {
     }
 
     @PostMapping
+    @Operation(summary = "Create a Project")
     public ResponseEntity<ProjectDto> createProject(@RequestBody ProjectDto dto){
 
         Project project = projectMapper.toEntity(dto);
@@ -36,6 +38,7 @@ public class ProjectController {
     }
 
     @GetMapping
+    @Operation(summary = "Get All Projects")
     public ResponseEntity<List<ProjectDto>> getAllProjects(){
         List<Project> projects = projectService.getAll();
         List<ProjectDto> projectsDto = projectMapper.toListOfDto(projects);
@@ -43,6 +46,7 @@ public class ProjectController {
     }
 
     @GetMapping(path = "/{id}")
+    @Operation(summary = "Get a Project By ID")
     public ResponseEntity<ProjectDto> getProjectById(@PathVariable Long id){
         Project project = projectService.getById(id);
         ProjectDto projectDto = projectMapper.toDto(project);
@@ -50,7 +54,8 @@ public class ProjectController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProjectDto> updateTask(
+    @Operation(summary = "Full Update Project")
+    public ResponseEntity<ProjectDto> updateProject(
             @PathVariable Long id,
             @RequestBody @Valid ProjectDto projectDto) {
         Project projectUpdate = projectMapper.toEntity(projectDto);
@@ -61,6 +66,7 @@ public class ProjectController {
     }
 
     @DeleteMapping(path = "/{id}")
+    @Operation(summary = "Delete a Project Using ID")
     public void deleteProject(@PathVariable Long id){
         Project projectToDelete = projectService.getById(id);
         projectService.deleteProject(projectToDelete);

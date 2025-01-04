@@ -7,7 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eureka" />
       </profile>
       <profile name="Annotation profile for task-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -43,25 +42,19 @@
         <module name="comment-service" />
         <module name="user-service" />
         <module name="project-service" />
+        <module name="notification-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="auth-service" target="17" />
-      <module name="comment-service" target="17" />
-      <module name="eureka" target="17" />
       <module name="notificatiob-service" target="17" />
-      <module name="project-service" target="17" />
-      <module name="task-manager" target="17" />
-      <module name="task-service" target="17" />
-      <module name="user-service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="auth-service" options="-parameters" />
       <module name="comment-service" options="-parameters" />
-      <module name="eureka" options="-parameters" />
       <module name="notificatiob-service" options="-parameters" />
+      <module name="notification-service" options="-parameters" />
       <module name="project-service" options="-parameters" />
       <module name="task-manager" options="-parameters" />
       <module name="task-service" options="-parameters" />

@@ -7,7 +7,10 @@ import com.example.user_service.dto.UserResponseDto;
 import com.example.user_service.mappers.UserMapper;
 import com.example.user_service.model.User;
 import com.example.user_service.servicies.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +40,7 @@ public class UserController {
         this.userMapper = userMapper;
     }
     @PostMapping("/create")
+    @Operation(summary = "Create a new User")
     private ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto dto){
         User user = userMapper.toEntity(dto);
         User savedUser = userService.create(user);
@@ -45,6 +49,7 @@ public class UserController {
     }
 
     @GetMapping
+    @Operation(summary = "Get a List of all Users")
     private ResponseEntity<ExtendedBaseResponse<List<UserDto>>> getAllUsers() {
         List<User> allUsers = userService.getAllUsers();
         List<UserDto> allUsersDto = userMapper.toListOfDto(allUsers);
@@ -57,6 +62,7 @@ public class UserController {
 
 
     @GetMapping("/{email}")
+    @Operation(summary = "Get a User by Email")
     public ResponseEntity<UserResponseDto> getUserByEmail(@PathVariable String email) {
         Optional<User> user = Optional.ofNullable(userService.getUserByEmail(email));
         if (user.isEmpty()) {
@@ -73,6 +79,7 @@ public class UserController {
     }
 
     @PostMapping("/{id}")
+    @Operation(summary = "Full Update a User")
     public ResponseEntity<UserResponseDto> updateUser(@PathVariable Long id, @RequestBody UserDto userDto){
 
         User user = userMapper.toEntity(userDto);
@@ -86,6 +93,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{email}")
+    @Operation(summary = "Delete a User By ID")
     public ResponseEntity<String> deleteUser(@PathVariable("email") String email) {
         try {
             User userToDelete = userService.getUserByEmail(email);

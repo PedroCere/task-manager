@@ -7,6 +7,7 @@ import com.example.notification_service.mappers.NotificationMapper;
 import com.example.notification_service.models.Notification;
 import com.example.notification_service.respositories.NotificationRepository;
 import com.example.notification_service.servicies.NotificationService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.transaction.Transactional;
 import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ public class NotificationController {
     }
 
     @PostMapping
+    @Operation(summary = "Create a notification")
     public ResponseEntity<ResponseDto> createNotification(@RequestBody RequestDto requestDto) {
 
         Notification notification = notificationMapper.toEntity(requestDto);
@@ -43,6 +45,7 @@ public class NotificationController {
     }
 
     @GetMapping
+    @Operation(summary = "Get all notifications")
     public ResponseEntity<List<ResponseDto>> getAllNotifications(){
         List<Notification> notifications = notificationService.getAll();
         List<ResponseDto> responseDtoList = notificationMapper.toListOfDto(notifications);
@@ -50,18 +53,21 @@ public class NotificationController {
     }
 
     @GetMapping(path = "/{id}")
+    @Operation(summary = "Get all Notifications by ID")
     public ResponseEntity<ResponseDto> getNotificationById(@PathVariable Long id){
         Notification notification = notificationService.getById(id);
         ResponseDto responseDto = notificationMapper.toDto(notification);
         return new ResponseEntity<>(responseDto,HttpStatus.OK);
     }
     @GetMapping(path = "/user/{userId}")
+    @Operation(summary = "Get Notifications by user ID")
     public ResponseEntity<List<ResponseDto>> getNotificationByUserId(@PathVariable Long userId){
         List<Notification> notifications = notificationService.getAllByUserId(userId);
         List<ResponseDto> responseDtoList = notificationMapper.toListOfDto(notifications);
         return new ResponseEntity<>(responseDtoList,HttpStatus.OK);
     }
     @PutMapping(path = "/{id}")
+    @Operation(summary = "Update Notification by ID")
     public ResponseEntity<ResponseDto> updateNotification(@PathVariable Long id,@RequestBody RequestDto requestDto){
         Notification notification = notificationMapper.toEntity(requestDto);
         notification.setId(id);
@@ -70,11 +76,13 @@ public class NotificationController {
         return new ResponseEntity<>(responseDto,HttpStatus.OK);
     }
     @DeleteMapping(path = "/{id}")
+    @Operation(summary = "Delete Notification by ID")
     public void deleteNotification(@PathVariable Long id){
         Notification notificationToDelete = notificationService.getById(id);
         notificationService.deleteById(notificationToDelete);
     }
     @PatchMapping(path = "/{id}/read")
+    @Operation(summary = "Mark a Notification as ¨Read¨")
     public ResponseEntity<ResponseDto> markNotificationAsRead(@PathVariable Long id) {
         Notification notificationToMark = notificationService.getById(id);
         System.out.println("Notificación encontrada: " + notificationToMark);
@@ -88,12 +96,14 @@ public class NotificationController {
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
     @PatchMapping("/user/{userId}/read")
+    @Operation(summary = "Mark All Notifications as ¨Read¨")
     public ResponseEntity<String> markAllAsRead(@PathVariable Long userId) {
         notificationService.markAllAsRead(userId);
         return ResponseEntity.ok("All notifications marked as read for user " + userId);
     }
 
     @DeleteMapping("/user/{userId}")
+    @Operation(summary = "Delete All Notifications By User ID")
     public ResponseEntity<Void> deleteAllByUser(@PathVariable Long userId) {
         notificationService.deleteAllByUser(userId);
         return ResponseEntity.noContent().build();
