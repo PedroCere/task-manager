@@ -16,7 +16,6 @@ import java.util.List;
 )
 public interface NotificationMapper {
 
-    @Mapping(source = "isRead", target = "isRead")
     ResponseDto toDto(Notification notification);
 
     Notification toEntity(RequestDto dto);

@@ -7,17 +7,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="eureka" />
       </profile>
-      <profile name="Annotation profile for task-service" enabled="true">
+      <profile name="Annotation profile for comment-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.3.Final/mapstruct-processor-1.5.3.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.3.Final/mapstruct-1.5.3.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/project-lombok/lombok/1.18.32/lombok-1.18.32.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
         </processorPath>
+        <module name="notificatiob-service" />
+        <module name="comment-service" />
+        <module name="auth-service" />
         <module name="task-service" />
+        <module name="user-service" />
+        <module name="project-service" />
+        <module name="notification-service" />
       </profile>
       <profile name="Annotation profile for task-manager" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -28,22 +35,6 @@
         </processorPath>
         <module name="task-manager" />
       </profile>
-      <profile name="Annotation profile for auth-service" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.6.0.Beta1/mapstruct-processor-1.6.0.Beta1.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.0.Beta1/mapstruct-1.6.0.Beta1.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
-        </processorPath>
-        <module name="notificatiob-service" />
-        <module name="auth-service" />
-        <module name="comment-service" />
-        <module name="user-service" />
-        <module name="project-service" />
-        <module name="notification-service" />
-      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="notificatiob-service" target="17" />
@@ -53,6 +44,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="auth-service" options="-parameters" />
       <module name="comment-service" options="-parameters" />
+      <module name="eureka" options="-parameters" />
       <module name="notificatiob-service" options="-parameters" />
       <module name="notification-service" options="-parameters" />
       <module name="project-service" options="-parameters" />
