@@ -1,0 +1,14 @@
+.progress-bar {
+    width: 417px;
+    height: 106px;
+    background-color: #ffffff;
+    border: 10px solid #333437;
+    border-radius: 5px;
+  }
+  
+  .progress {
+    height: 100%;
+    background-color: #B9FF66;
+    transition: width 0.3s ease-in-out;
+  }
+  

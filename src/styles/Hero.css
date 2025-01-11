@@ -1,0 +1,38 @@
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    padding: 150px;
+    background-color: white;
+    color: #191A23;
+  }
+  
+  .hero-content {
+    max-width: 70%;
+  }
+  
+  .hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+  
+  .try-now {
+    background-color: #B9FF66;
+    border: none;
+    padding: 25px 40px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .progress-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  

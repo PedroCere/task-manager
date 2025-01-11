@@ -1,0 +1,70 @@
+.service-card {
+    width: 650px;
+    height: 310px;
+    background-color: var(--bgColor);
+    color: var(--textColor);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 50px;
+    position: relative;
+    
+}
+
+.service-card img.service-icon {
+    width: 200px;
+    height: 160px;
+    position: absolute;
+    top: 20px;
+    right: 150px;
+
+}
+
+
+.service-card:hover {   
+    transform: translateY(-10px);
+    box-shadow: 0 20px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    background-color: var(--titleBgColor);
+    color: var(--titleTextColor);
+    border-radius: 4px;
+    max-width: 150px; /* Limita el ancho para que el texto se divida */
+    white-space: normal; /* Permite el salto de línea */
+    text-align: left;
+}
+
+
+.service-icon {
+    width: 200px;
+    height: 150px;
+    position: absolute;
+    top: 40px;
+    right: 100px;
+}
+
+.service-card p {
+    font-size: 1rem;
+    margin-top: auto;
+    color: var(--textColor);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-card p img {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+}
+
+.service-card.dark p {
+    color: #FFFFFF; /* Color blanco para descripciones en cajas negras */
+}
+
