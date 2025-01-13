@@ -1,10 +1,12 @@
 .header {
     display: flex;
+    top: 0; /* Fija el header en la parte superior */
+    z-index: 100; /* Asegúrate de que esté encima de otros elementos */
     justify-content: space-between;
     align-items: center;
-    padding: 30px 100px;
+    padding: 5px 100px;
     background-color: white;
-    border-bottom: 1px solid #333437;
+    border-bottom: 0.5px solid #c2c2c2;
   }
   
   .logo {

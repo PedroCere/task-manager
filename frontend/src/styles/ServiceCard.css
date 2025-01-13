@@ -1,5 +1,5 @@
 .service-card {
-    width: 650px;
+    width: 600px;
     height: 310px;
     background-color: var(--bgColor);
     color: var(--textColor);
@@ -8,9 +8,10 @@
     justify-content: space-around;
     padding: 30px;
     box-sizing: border-box;
-    border-radius: 50px;
+    border-radius: 60px;
     position: relative;
-    
+    box-shadow: 0px 8px 2px rgb(7, 2, 2); /* Sombra sutil */
+    border: 2px solid #000; /* Borde verde */
 }
 
 .service-card img.service-icon {
@@ -21,6 +22,13 @@
     right: 150px;
 
 }
+.service-card .arrow-Icon {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    margin-right: 8px;
+}
+
 
 
 .service-card:hover {   
@@ -46,6 +54,7 @@
     position: absolute;
     top: 40px;
     right: 100px;
+    
 }
 
 .service-card p {
@@ -56,6 +65,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 20px;
+
 }
 
 .service-card p img {
