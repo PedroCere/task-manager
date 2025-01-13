@@ -76,3 +76,55 @@ h1, h2, h3, .register-button, .try-now .App-header .hero-content{
 body {
   font-family: 'Space Grotesk', sans-serif;
 }
+/* Ajustar la fuente para los botones */
+button, input, select {
+  font-family: inherit; /* Hereda la fuente del body */
+  font-size: 16px; /* Asegúrate de ajustar el tamaño si es necesario */
+}
+
+@media (max-width: 1400px) {
+  .join-now-container {
+    width: 90%;
+    margin: 0 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .join-now-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .join-now-content {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .join-now-image-container {
+    margin-top: 20px;
+  }
+  
+}
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links,
+  .footer-social,
+  .footer-contact,
+  .footer-subscribe .subscribe-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .subscribe-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .subscribe-input, .subscribe-button {
+    width: 80%;
+  }
+}

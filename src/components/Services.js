@@ -11,6 +11,28 @@ import arrowIcon from '../assets/arrow-Icon.png';
 
 const servicesData = [
   {
+    title: 'Progress Monitoring',
+    description: 'Track your progress effortlessly',
+    icon: progressIcon,
+    bgColor: '#191A23',
+    textColor: '#FFFFFF',
+    titleBgColor: '#FFFFFF',
+    titleTextColor: '#000000',
+    arrowIcon: arrowIcon,
+    dark: true
+  },
+  {
+    title: 'Task Management',
+    description: 'Organize your tasks with ease',
+    icon: taskIcon,
+    bgColor: '#B9FF66',
+    textColor: '#000000',
+    titleBgColor: '#FFFFFF',
+    titleTextColor: '#000000',
+    arrowIcon: arrowIcon,
+    dark: false
+  },
+  {
     title: 'Project Organization',
     description: 'Manage multiple projects effortlessly',
     icon: projectIcon,
@@ -21,13 +43,25 @@ const servicesData = [
     arrowIcon: arrowIcon,
     dark: false
   },
+
   {
-    title: 'Task Management',
-    description: 'Organize your tasks with ease',
-    icon: taskIcon,
+    title: 'Deadline Tracking',
+    description: 'Never miss a deadline',
+    icon: deadlineIcon,
     bgColor: '#B9FF66',
     textColor: '#000000',
     titleBgColor: '#FFFFFF',
+    titleTextColor: '#000000',
+    arrowIcon: arrowIcon,
+    dark: false
+  },
+  {
+    title: 'Real-time Notifications',
+    description: 'Stay updated with real-time notifications',
+    icon: notificationsIcon,
+    bgColor: '#f3f3f3',
+    textColor: '#000000',
+    titleBgColor: '#B9FF66',
     titleTextColor: '#000000',
     arrowIcon: arrowIcon,
     dark: false
@@ -43,39 +77,8 @@ const servicesData = [
     arrowIcon: arrowIcon,
     dark: true
   },
-  {
-    title: 'Real-time Notifications',
-    description: 'Stay updated with real-time notifications',
-    icon: notificationsIcon,
-    bgColor: '#f3f3f3',
-    textColor: '#000000',
-    titleBgColor: '#B9FF66',
-    titleTextColor: '#000000',
-    arrowIcon: arrowIcon,
-    dark: false
-  },
-  {
-    title: 'Deadline Tracking',
-    description: 'Never miss a deadline',
-    icon: deadlineIcon,
-    bgColor: '#B9FF66',
-    textColor: '#000000',
-    titleBgColor: '#FFFFFF',
-    titleTextColor: '#000000',
-    arrowIcon: arrowIcon,
-    dark: false
-  },
-  {
-    title: 'Progress Monitoring',
-    description: 'Track your progress effortlessly',
-    icon: progressIcon,
-    bgColor: '#191A23',
-    textColor: '#FFFFFF',
-    titleBgColor: '#FFFFFF',
-    titleTextColor: '#000000',
-    arrowIcon: arrowIcon,
-    dark: true
-  },
+   
+ 
   
 ];
 
@@ -85,9 +88,6 @@ function Services() {
       <hr className="services-divider" />
       <div className="services-header">
         <h1 className="services-head">Services</h1>
-        <p className="services-intro">
-          At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include:
-        </p>
       </div>
       <div className="services-container">
         {servicesData.map((service, index) => (
@@ -99,4 +99,5 @@ function Services() {
 }
 
 export default Services;
+
 
