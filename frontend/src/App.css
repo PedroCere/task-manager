@@ -128,3 +128,12 @@ button, input, select {
     width: 80%;
   }
 }
+
+/* Evitar que elementos hijos sobresalgan del contenedor */
+.container {
+  overflow: hidden;
+}
+body {
+  overflow-x: hidden; /* Elimina el scroll horizontal */
+}
+

@@ -1,70 +1,139 @@
-.login-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-    background-color: #1a1a1a;
-    color: white;
-  }
-  
-  .login-form {
-    width: 40%;
-    padding: 2rem;
-  }
-  
-  .login-form h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .login-form p {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-    color: #ccc;
-  }
-  
-  .login-form form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .login-form input {
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border: none;
-    border-radius: 4px;
-    background-color: #2a2a2a;
-    color: white;
-  }
-  
-  .login-form button {
-    padding: 1rem;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  
-  .login-form button:hover {
-    background-color: #45a049;
-  }
-  
-  .login-form a {
-    color: #4caf50;
-    text-decoration: none;
-  }
-  
-  .login-form a:hover {
-    text-decoration: underline;
-  }
-  
-  .login-image {
-    width: 60%;
-    background: url('../assets/login-img.png') no-repeat center center;
-    background-size: cover;
-    height: 100vh;
-  }
-  
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.left-section {
+  width: 45%;
+  background-color: #111111;
+  color: white;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.left-section h2 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.left-section p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.left-section form {
+  width: 100%;
+}
+
+.left-section input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  background: #222;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.forgot-password a {
+  color: #B9FF66;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.left-section button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #B9FF66;
+  color: #111111;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.left-section a {
+  color: #B9FF66;
+  text-decoration: none;
+}
+
+.right-section h1 {
+  position: relative;
+  z-index: 1;
+  color: black;
+  font-size: 3.5rem; /* Título más grande */
+  text-align: left; /* Alineado a la izquierda */
+  font-weight: bold;
+  margin-top: -2rem; /* Más arriba */
+  margin-left: 2rem; /* Hacia la izquierda */
+}
+
+.right-section img {
+  width: 70%; /* Imagen más grande */
+  max-width: 500px; /* Limitar tamaño máximo */
+  position: absolute;
+  bottom: 2rem; /* Pegada al suelo */
+  z-index: 1;
+}
+
+
+.right-section p {
+  position: relative;
+  z-index: 1;
+  color: rgb(3, 3, 3);
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.right-section img {
+  width: 50%;
+  max-width: 300px;
+  position: relative;
+  z-index: 1;
+  margin-top: 2rem;
+}
+
+/* Blob styles */
+.blob {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  z-index: 0;
+  opacity: 1;
+}
+
+.blob-1 {
+  top: 150px;
+  left: -200px;
+}
+
+.blob-2 {
+  top: -300px;
+  right:400px;
+}
+
+.blob-3 {
+  top: -250px;
+  right: -290px;
+  width: 800px; /* Blob más grande */
+  height: 800px; /* Blob más grande */
+}
+
+.blob-4 {
+  bottom: -300px;
+  right: -350px;
+  width: 1230px; /* Blob más grande */
+  height: 1230px; /* Blob más grande */
+}
