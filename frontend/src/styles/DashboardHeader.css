@@ -1,0 +1,32 @@
+/* src/DashboardHeader.css */
+.dashboard-header {
+    background-color: #2b3a42; /* Azul oscuro para el dashboard */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.dashboard-header .nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.dashboard-header a {
+    text-decoration: none;
+    color: white;
+}
+
+.dashboard-header a:hover {
+    text-decoration: underline;
+}
+
+.logout-button {
+    background-color: #ff4d4f;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}

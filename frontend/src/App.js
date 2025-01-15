@@ -12,7 +12,7 @@ import './App.css';
 
 function AppContent() {
   const location = useLocation();
-  const hideHeader = location.pathname === '/register' || location.pathname === '/login';
+  const hideHeader = location.pathname === '/dashboard' || location.pathname === '/register' || location.pathname === '/login';
 
   return (
     <>
@@ -28,6 +28,7 @@ function AppContent() {
               <Footer />
             </>
           } 
+          
         />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
