@@ -1,0 +1,91 @@
+/* styles/TaskCard.css */
+
+.task-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #ccc; /* Indicador de estado */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+.dashboard.light .task-card {
+    background-color: #ffffff;
+    color: #333;
+  }
+  
+  .dashboard.dark .task-card {
+    background-color: #1e1e1e; /* Fondo oscuro */
+    color: #ffffff; /* Texto claro */
+    border: 1px solid #333;
+  }
+  
+  /* Etiquetas de prioridad y estado */
+  .task-card .badge {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 12px;
+    display: inline-block;
+  }
+  
+  .dashboard.light .task-card .badge.high {
+    background-color: #ffcccc; /* Rojo claro */
+    color: #cc0000; /* Rojo oscuro */
+  }
+  
+  .dashboard.dark .task-card .badge.high {
+    background-color: #801515; /* Rojo oscuro */
+    color: #ffcccc; /* Texto claro */
+  }
+  
+  .dashboard.light .task-card .badge.on-progress {
+    background-color: #ffe4b2; /* Amarillo claro */
+    color: #996600; /* Texto oscuro */
+  }
+  
+  .dashboard.dark .task-card .badge.on-progress {
+    background-color: #664d00; /* Amarillo oscuro */
+    color: #ffe4b2; /* Texto claro */
+  }
+  
+  .dashboard.light .task-card .badge.completed {
+    background-color: #ccffcc; /* Verde claro */
+    color: #006600; /* Verde oscuro */
+  }
+  
+  .dashboard.dark .task-card .badge.completed {
+    background-color: #003300; /* Verde oscuro */
+    color: #ccffcc; /* Texto claro */
+  }
+  /* Botones e íconos */
+.task-card .icon {
+    color: inherit;
+  }
+  
+  .dashboard.light .task-card .icon {
+    color: #333; /* Iconos oscuros en modo claro */
+  }
+  
+  .dashboard.dark .task-card .icon {
+    color: #ffffff; /* Iconos claros en modo oscuro */
+  }
+  
+  /* Números de comentarios, archivos */
+  .task-card .stats {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+  }
+  
+  .dashboard.light .task-card .stats {
+    color: #666; /* Texto secundario en modo claro */
+  }
+  
+  .dashboard.dark .task-card .stats {
+    color: #bbbbbb; /* Texto secundario en modo oscuro */
+  }
+  

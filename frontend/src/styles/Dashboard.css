@@ -1,34 +1,74 @@
+/* styles/Dashboard.css */
 .dashboard {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .main-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .sidebar {
-    width: 250px;
-    background-color: #2c3e50;
-    color: white;
-    padding: 20px;
-  }
-  
-  .header {
-    height: 60px;
-    background-color: #34495e;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-  }
-  
-  .content-area {
-    padding: 20px;
-    background-color: #ecf0f1;
-    flex-grow: 1;
-  }
-  
+  display: flex;
+  height: 100vh;
+}
+
+/* General */
+.dashboard.light {
+  background-color: #f9fafc; /* Fondo claro */
+  color: #333; /* Texto oscuro */
+}
+
+.dashboard.dark {
+  background-color: #191A23; /* Fondo oscuro */
+  color: #ffffff; /* Texto claro */
+}
+
+
+.dashboard.light .icon {
+  color: #333; /* Íconos oscuros */
+}
+
+.dashboard.light .nav-links a {
+  color: #333;
+}
+
+.dashboard.light .nav-links a.active {
+  background-color: #b9ff66; /* Verde claro */
+  color: #000; /* Contraste para texto activo */
+}
+
+
+.dashboard.dark .icon {
+  color: #ffffff; /* Íconos claros */
+}
+
+.dashboard.dark .nav-links a {
+  color: #bbb; /* Texto de enlaces */
+}
+
+.dashboard.dark .nav-links a.active {
+  background-color: #34a853; /* Verde oscuro */
+  color: #fff; /* Contraste para texto activo */
+}
+
+/* Cambiar fondo y bordes en las tarjetas */
+.dashboard-content .card {
+  background-color: #ffffff; /* Por defecto, tarjetas claras */
+  border: 1px solid #e0e0e0;
+  color: #333;
+}
+
+.dashboard.light .dashboard-content .card {
+  background-color: #ffffff; /* Tarjetas claras */
+  border: 1px solid #e0e0e0;
+  color: #333;
+}
+
+.dashboard.dark .dashboard-content .card {
+  background-color: #1e1e1e; /* Fondo oscuro */
+  border: 1px solid #333; /* Borde oscuro */
+  color: #fff; /* Texto claro */
+}
+
+/* Botones en modo oscuro y claro */
+.dashboard.light .button {
+  background-color: #b9ff66;
+  color: #000;
+}
+
+.dashboard.dark .button {
+  background-color: #34a853;
+  color: #fff;
+}

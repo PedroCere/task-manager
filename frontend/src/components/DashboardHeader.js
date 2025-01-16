@@ -1,20 +1,26 @@
+// components/DashboardHeader.js
 import React from 'react';
-import '../styles/DashboardHeader.css' // Para estilos adicionales
+import '../styles/DashboardHeader.css';
+import PedroUser from '../assets/pedro-user.png';
 
 const DashboardHeader = () => {
+  const today = new Date().toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+
   return (
     <header className="dashboard-header">
-      <div>Logo</div>
-      <nav>
-        <ul className="nav-links">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#usuarios">Usuarios</a></li>
-          <li><a href="#ajustes">Ajustes</a></li>
-        </ul>
-      </nav>
-      <div>
-        <span>Usuario</span>
-        <button className="logout-button">Cerrar sesión</button>
+      <div className="header-left">
+        <h2>Today</h2>
+        <p>{today}</p>
+      </div>
+      <div className="header-right">
+        <img
+          src={PedroUser}
+          alt="User Avatar"
+          className="user-avatar"
+        />
+        <span className="user-name">Mohamed Salah</span>
       </div>
     </header>
   );

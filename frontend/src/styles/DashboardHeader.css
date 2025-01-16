@@ -1,32 +1,30 @@
-/* src/DashboardHeader.css */
 .dashboard-header {
-    background-color: #2b3a42; /* Azul oscuro para el dashboard */
-    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-}
+    padding: 20px 30px;
+    background-color: #ffffff;
+  }
+  .dashboard.light .dashboard-header {
+    background-color: #ffffff; /* Modo claro */
+    color: #333;
+  }
+  
+  .dashboard.dark .dashboard-header {
+    background-color: #191A23; /* Fondo oscuro */
+    color: #ffffff; /* Texto claro */
+  }
+  
 
-.dashboard-header .nav-links {
+  .header-right {
     display: flex;
-    gap: 1rem;
-}
-
-.dashboard-header a {
-    text-decoration: none;
-    color: white;
-}
-
-.dashboard-header a:hover {
-    text-decoration: underline;
-}
-
-.logout-button {
-    background-color: #ff4d4f;
-    border: none;
-    padding: 0.5rem 1rem;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-}
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
