@@ -1,16 +1,12 @@
-// src/context/ThemeContext.js
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-// Crear el contexto
 const ThemeContext = createContext();
 
-// Proveedor del contexto
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light'); // Por defecto es modo claro
+  const [theme, setTheme] = useState('dark'); // Tema inicial: oscuro
 
-  // Función para alternar entre temas
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
   return (
@@ -20,5 +16,4 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-// Hook para usar el contexto más fácilmente
 export const useTheme = () => useContext(ThemeContext);

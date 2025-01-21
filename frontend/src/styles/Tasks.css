@@ -1,0 +1,78 @@
+/* src/styles/Tasks.css */
+.tasks {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tasks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .tasks-header h1 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .add-task-btn {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-task-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tasks-table th, .tasks-table td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  .tasks-table th {
+    background-color: #ddd;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .tasks-table tr {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tasks-table tr:last-child {
+    border-bottom: none;
+  }
+  
+  .tasks-table td {
+    color: #555;
+  }
+  
+  .status-completed td {
+    background-color: #e8f5e9; 
+    color: #2e7d32;
+  }
+  
+  .status-in-progress td {
+    background-color: #fff8e1; 
+    color: #f57c00;
+  }
+  
+  .status-pending td {
+    background-color: #ffebee; 
+    color: #c62828;
+  }
+  

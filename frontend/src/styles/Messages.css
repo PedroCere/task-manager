@@ -1,0 +1,58 @@
+/* src/styles/Messages.css */
+.messages {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .messages-header h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .messages-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .message-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+  }
+  
+  .message-item.unread {
+    background-color: #f0f4f8;
+    font-weight: bold;
+  }
+  
+  .message-item:hover {
+    background-color: #e8f5e9;
+  }
+  
+  .message-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message-sender {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .message-subject {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .message-date {
+    font-size: 0.8rem;
+    color: #888;
+  }
+  

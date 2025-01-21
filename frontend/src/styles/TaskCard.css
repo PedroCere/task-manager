@@ -1,10 +1,10 @@
-/* styles/TaskCard.css */
+
 
 .task-card {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-left: 4px solid #ccc; /* Indicador de estado */
+    border-left: 4px solid #ccc; 
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -17,12 +17,12 @@
   }
   
   .dashboard.dark .task-card {
-    background-color: #1e1e1e; /* Fondo oscuro */
-    color: #ffffff; /* Texto claro */
+    background-color: #1e1e1e;
+    color: #ffffff;
     border: 1px solid #333;
   }
   
-  /* Etiquetas de prioridad y estado */
+
   .task-card .badge {
     font-size: 12px;
     font-weight: bold;

@@ -76,10 +76,10 @@ h1, h2, h3, .register-button, .try-now .App-header .hero-content{
 body {
   font-family: 'Space Grotesk', sans-serif;
 }
-/* Ajustar la fuente para los botones */
+
 button, input, select {
-  font-family: inherit; /* Hereda la fuente del body */
-  font-size: 16px; /* Asegúrate de ajustar el tamaño si es necesario */
+  font-family: inherit; 
+  font-size: 16px; 
 }
 
 @media (max-width: 1400px) {
@@ -129,12 +129,12 @@ button, input, select {
   }
 }
 
-/* Evitar que elementos hijos sobresalgan del contenedor */
+
 .container {
   overflow: hidden;
 }
 body {
-  overflow-x: hidden; /* Elimina el scroll horizontal */
+  overflow-x: hidden;
 }
 
 

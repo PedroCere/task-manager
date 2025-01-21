@@ -1,0 +1,19 @@
+/* src/styles/LayoutWithSidebar.css */
+
+.layout-with-sidebar {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .layout-with-sidebar .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .layout-with-sidebar .content {
+    flex: 1;
+    padding: 20px;
+    background-color: var(--bg-color); /* Según el tema */
+  }
+  

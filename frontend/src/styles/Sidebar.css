@@ -1,77 +1,98 @@
-/* styles/Sidebar.css */
+/* General Sidebar Styles */
 .sidebar {
-  width: 250px;
-  background-color: #ffffff; /* Fondo claro por defecto */
-  color: #333;
-  padding: 20px;
+  width: 240px;
+  background-color: #1a1a2e;
+  color: #fff;
+  padding: 20px 15px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  border-right: none; /* Elimina cualquier borde */
-  box-shadow: none; /* Elimina sombras */
+  justify-content: space-between;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Modo claro */
+/* Logo Styles */
+.logo-container {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo-image {
+  width: 120px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Navigation Links */
+.nav-links a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #d1d1e9;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-links a .icon {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.nav-links a:hover {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.nav-links a.active {
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+}
+
+/* Theme Switcher */
+.theme-switcher {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.theme-switcher label {
+  font-size: 0.9rem;
+  color: #d1d1e9;
+  cursor: pointer;
+}
+
+.theme-switcher .switch-label {
+  margin-left: 10px;
+}
+
+/* Light and Dark Modes */
 .sidebar.light {
   background-color: #ffffff;
   color: #333;
 }
 
-.sidebar.light .icon {
-  color: #333;
-}
-
-.sidebar.light .theme-switcher label {
-  color: #333;
-}
-
-/* Modo oscuro */
-.sidebar.dark {
-  background-color: #191A23;
-  color: #ffffff;
-}
-
-.sidebar.dark .icon {
-  color: #ffffff;
-}
-
-.sidebar.dark .theme-switcher label {
-  color: #ffffff;
-}
-
-/* Links */
-.nav-links a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.nav-links a:hover {
-  background-color: #f0f4f8;
-}
-
-.sidebar.light .nav-links a:hover {
-  background-color: #eaeaea; /* Hover claro */
-}
-
-.sidebar.dark .nav-links a:hover {
-  background-color: #444444; /* Hover oscuro */
-}
-
-/* Links activos */
-.nav-links a.active {
-  font-weight: bold;
+.sidebar.light .nav-links a {
+  color: #555;
 }
 
 .sidebar.light .nav-links a.active {
-  background-color: #b9ff66; /* Verde claro */
+  background-color: #b9ff66;
   color: #000;
 }
 
+.sidebar.dark {
+  background-color: #1a1a2e;
+  color: #ffffff;
+}
+
+.sidebar.dark .nav-links a {
+  color: #d1d1e9;
+}
+
 .sidebar.dark .nav-links a.active {
-  background-color: #34a853; /* Verde oscuro */
+  background-color: #34a853;
   color: #fff;
 }

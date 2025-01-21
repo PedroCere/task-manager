@@ -1,0 +1,122 @@
+/* src/styles/Analytics.css */
+
+/* Estructura general */
+.analytics {
+    padding: 20px;
+    color: #333;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .analytics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .analytics-header h1 {
+    font-size: 60px;
+    font-weight: bold;
+    color: black; /* Verde brillante */
+    background-color: #B9FF66;
+    border-radius: 20px;
+
+  }
+  
+  .analytics-graphic {
+    position: relative;
+  }
+  
+
+  
+  /* Métricas */
+  .analytics-metrics {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  .metric-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .metric-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: #dcdcdc;
+  }
+  
+  .metric-icon.projects {
+    background-color: #f4b400; /* Naranja */
+  }
+  
+  .metric-icon.time {
+    background-color: #4285f4; /* Azul */
+  }
+  
+  .metric-icon.resources {
+    background-color: #0f9d58; /* Verde */
+  }
+  
+  .metric-details h3 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .metric-change.increase {
+    color: #0f9d58;
+  }
+  
+  .metric-change.decrease {
+    color: #db4437;
+  }
+  
+  /* Tabla de resumen */
+  .project-summary {
+    margin-top: 20px;
+  }
+  
+  .project-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project-table th,
+  .project-table td {
+    padding: 12px 16px;
+    text-align: left;
+  }
+  
+  .project-table th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+  }
+  
+  .project-table tr:nth-child(even) {
+    background-color: #f4f4f4;
+  }
+  
+  .status.completed {
+    color: #0f9d58;
+  }
+  
+  .status.delayed {
+    color: #db4437;
+  }
+  
+  .status.at-risk {
+    color: #f4b400;
+  }
+  

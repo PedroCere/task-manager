@@ -1,5 +1,5 @@
-// components/Sidebar.js
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { FaHome, FaTasks, FaProjectDiagram, FaChartBar, FaCog, FaEnvelope } from 'react-icons/fa';
 import { useTheme } from '../context/ThemeContext'; // Importar el contexto del tema
 import '../styles/Sidebar.css';
@@ -9,6 +9,7 @@ const Sidebar = () => {
 
   return (
     <div className={`sidebar ${theme}`}> {/* Cambiar según el tema */}
+      {/* Logo */}
       <div className="logo-container">
         <img 
           src={require('../assets/mangly-logo (1).png')} 
@@ -16,35 +17,39 @@ const Sidebar = () => {
           className="logo-image" 
         />
       </div>
+
+      {/* Navegación */}
       <nav className="nav-links">
-        <a href="/dashboard" className="active">
+        <NavLink to="/dashboard" activeClassName="active">
           <FaHome className="icon" /> Dashboard
-        </a>
-        <a href="/analytics">
+        </NavLink>
+        <NavLink to="/analytics" activeClassName="active">
           <FaChartBar className="icon" /> Analytics
-        </a>
-        <a href="/messages">
+        </NavLink>
+        <NavLink to="/messages" activeClassName="active">
           <FaEnvelope className="icon" /> Messages
-        </a>
-        <a href="/tasks">
+        </NavLink>
+        <NavLink to="/tasks" activeClassName="active">
           <FaTasks className="icon" /> Tasks
-        </a>
-        <a href="/projects">
+        </NavLink>
+        <NavLink to="/projects" activeClassName="active">
           <FaProjectDiagram className="icon" /> Projects
-        </a>
-        <a href="/settings">
+        </NavLink>
+        <NavLink to="/settings" activeClassName="active">
           <FaCog className="icon" /> Settings
-        </a>
+        </NavLink>
       </nav>
+
+      {/* Selector de tema */}
       <div className="theme-switcher">
         <label>
           <input 
             type="checkbox" 
-            checked={theme === 'dark'} 
+            checked={theme === 'light'} 
             onChange={toggleTheme} 
           />
           <span className="switch-label">
-            {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+            {theme === 'light' ? 'Light Mode' : 'Dark Mode'}
           </span>
         </label>
       </div>
