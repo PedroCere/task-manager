@@ -30,4 +30,6 @@ public class JwtUtil {
                 .signWith(key, SignatureAlgorithm.HS512)
                 .compact();
     }
+
+
 }

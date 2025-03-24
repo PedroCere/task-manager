@@ -1,7 +1,8 @@
 import JoinNow from '../assets/JoinNow.png';
 import React from 'react';
 import '../styles/JoinNow.css';
- 
+import { Link } from 'react-router-dom'; // Import Link for routing
+
 const JoinNowSection = () => {
     return (
       <section className="join-now-section">
@@ -11,7 +12,7 @@ const JoinNowSection = () => {
             <p className="join-now-paragraph">
               Take control of your tasks and projects with Mangly. Join us today and transform the way you work!
             </p>
-            <button className="join-now-button">Join Now</button>
+            <Link to="/register" className="join-now-button">Join Now</Link> {/* Updated to use Link */}
           </div>
           <div className="join-now-image-container">
             <img 
@@ -23,7 +24,6 @@ const JoinNowSection = () => {
         </div>
       </section>
     )
-  }
-  
-  export default JoinNowSection;
-  
+}
+
+export default JoinNowSection;

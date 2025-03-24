@@ -1,56 +1,43 @@
+// src/components/Sidebar.js
 import React from 'react';
+import { FaHome, FaChartBar, FaEnvelope, FaTasks, FaProjectDiagram, FaCog } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaTasks, FaProjectDiagram, FaChartBar, FaCog, FaEnvelope } from 'react-icons/fa';
-import { useTheme } from '../context/ThemeContext'; // Importar el contexto del tema
+import { useTheme } from '../context/ThemeContext';
+import ManglyLogo from '../assets/mangly-logo (1).png';
 import '../styles/Sidebar.css';
 
 const Sidebar = () => {
-  const { theme, toggleTheme } = useTheme(); // Obtener el tema actual y la función para alternarlo
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className={`sidebar ${theme}`}> {/* Cambiar según el tema */}
-      {/* Logo */}
+    <div className={`sidebar ${theme}`}>
       <div className="logo-container">
-        <img 
-          src={require('../assets/mangly-logo (1).png')} 
-          alt="Mangly Logo" 
-          className="logo-image" 
-        />
+        <img src={require('../assets/mangly-logo (1).png')} alt="Mangly Logo" className="logo-image" />
       </div>
-
-      {/* Navegación */}
       <nav className="nav-links">
-        <NavLink to="/dashboard" activeClassName="active">
+        <NavLink to="/dashboard">
           <FaHome className="icon" /> Dashboard
         </NavLink>
-        <NavLink to="/analytics" activeClassName="active">
+        <NavLink to="/analytics">
           <FaChartBar className="icon" /> Analytics
         </NavLink>
-        <NavLink to="/messages" activeClassName="active">
+        <NavLink to="/messages">
           <FaEnvelope className="icon" /> Messages
         </NavLink>
-        <NavLink to="/tasks" activeClassName="active">
+        <NavLink to="/tasks">
           <FaTasks className="icon" /> Tasks
         </NavLink>
-        <NavLink to="/projects" activeClassName="active">
+        <NavLink to="/projects">
           <FaProjectDiagram className="icon" /> Projects
         </NavLink>
-        <NavLink to="/settings" activeClassName="active">
+        <NavLink to="/settings">
           <FaCog className="icon" /> Settings
         </NavLink>
       </nav>
-
-      {/* Selector de tema */}
       <div className="theme-switcher">
         <label>
-          <input 
-            type="checkbox" 
-            checked={theme === 'light'} 
-            onChange={toggleTheme} 
-          />
-          <span className="switch-label">
-            {theme === 'light' ? 'Light Mode' : 'Dark Mode'}
-          </span>
+          <input type="checkbox" onChange={toggleTheme} />
+          {theme === 'light' ? 'Light Mode' : 'Dark Mode'}
         </label>
       </div>
     </div>

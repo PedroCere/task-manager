@@ -1,19 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { registerUser } from '../api'; // Importamos la función de registro
 import '../styles/Register.css';
 import registerImage from '../assets/register-img.png';
 
 const Register = () => {
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
+    try {
+      await registerUser({ username, email, password });
+      setSuccess('Registration successful! Redirecting to login...');
+      setTimeout(() => navigate('/login'), 2000); // Redirige al login después de 2s
+    } catch (err) {
+      setError('Registration failed. Please try again.');
+    }
+  };
+
   return (
     <div className="container">
       <div className="left-section">
         <div className="form-container">
           <h1>Register</h1>
           <p>Create a new account</p>
-          <form>
-            <input type="email" placeholder="Email" />
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
-            <input type="password" placeholder="Confirm Password" />
+          {error && <p className="error-message">{error}</p>}
+          {success && <p className="success-message">{success}</p>}
+          <form onSubmit={handleRegister}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
             <button type="submit">Create Account</button>
           </form>
           <p>
