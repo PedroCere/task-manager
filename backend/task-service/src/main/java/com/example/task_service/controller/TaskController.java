@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.swing.plaf.SeparatorUI;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(path = "/task")
 public class TaskController {
