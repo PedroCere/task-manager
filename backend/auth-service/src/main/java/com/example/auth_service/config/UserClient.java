@@ -5,15 +5,12 @@ import com.example.auth_service.dto.UserResponseDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "user-service",url = "http://localhost:8080")
+@FeignClient(name = "user-service", url = "http://localhost:8080")
 public interface UserClient {
 
     @GetMapping("/users/{email}")
-    UserResponseDto getUserByEmail(@PathVariable("email")String email);
+    UserResponseDto getUserByEmail(@PathVariable("email") String email);
 
     @PostMapping("/users/create")
     void createUser(@RequestBody UserRequestDto dto);
-
-
-
 }
