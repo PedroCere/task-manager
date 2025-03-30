@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AuthServiceImpl  {
+public class AuthServiceImpl implements AuthService{
 
     private final UserClient userClient;
     private final JwtUtil jwtUtil;
@@ -34,5 +34,10 @@ public class AuthServiceImpl  {
         }
 
         return jwtUtil.generateToken(userResponse.getEmail());
+    }
+
+    @Override
+    public void test() {
+
     }
 }

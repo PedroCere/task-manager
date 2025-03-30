@@ -12,5 +12,5 @@ public interface UserClient {
     UserResponseDto getUserByEmail(@PathVariable("email") String email);
 
     @PostMapping("/users/create")
-    void createUser(@RequestBody UserRequestDto dto);
+    UserResponseDto createUser(@RequestBody UserRequestDto dto);
 }

@@ -6,7 +6,11 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.example.auth_service.config")
+@ComponentScan(basePackages = {
+		"com.example.auth_service.controllers",
+		"com.example.auth_service.services",
+		"com.example.auth_service.config"
+})
 @EnableFeignClients(basePackages = "com.example.auth_service.config")
 public class AuthServiceApplication {
 
